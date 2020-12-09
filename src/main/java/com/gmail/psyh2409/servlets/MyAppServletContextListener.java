@@ -1,4 +1,4 @@
-package ua.kiev.prog;
+package com.gmail.psyh2409.servlets;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
