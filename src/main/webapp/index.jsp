@@ -6,8 +6,10 @@
 <body>
 <br>
 <h2>Add client</h2>
-<form action="/clients" method="post">
-    Name: <input type="text" name="name"><br>
+<form action="${pageContext.request.contextPath}/clients" method="post">
+    Name: <label>
+    <input type="text" name="name">
+</label><br>
     <br>
     <input type="submit" value="create"><br>
 </form>

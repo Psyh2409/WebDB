@@ -4,6 +4,7 @@ import com.gmail.psyh2409.dao.ClientDAO;
 import com.gmail.psyh2409.dao.RateDAO;
 import com.gmail.psyh2409.entities.Client;
 import com.gmail.psyh2409.entities.Rate;
+import com.gmail.psyh2409.utils.CurrentCurrencyRate;
 
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
@@ -24,8 +25,9 @@ public class HomeServlet extends HttpServlet {
         ClientDAO cdao = new ClientDAO();
         client = cdao.getById(emf, Client.class, id);
         rate = new Rate();
-        rate.setEur(34.26);
-        rate.setUsd(28.24);
+        Double[] currentRate = CurrentCurrencyRate.getEURandUSDrangeNow();
+        rate.setEur(currentRate[0]);
+        rate.setUsd(currentRate[1]);
         RateDAO rdao = new RateDAO();
         rdao.add(emf, rate);
         rate = rdao.getById(emf, Rate.class, rate.getId());
